@@ -1,6 +1,8 @@
 package ac.kr.tukorea.busapplication.entitry;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Station")
 @Table(name="station_table")
@@ -41,5 +43,6 @@ public class StationEntity {
     )
     private double gps_y;
 
-
+    @OneToMany(mappedBy = "station")
+    private List<RouteStationEntity> routes = new ArrayList<>();
 }
