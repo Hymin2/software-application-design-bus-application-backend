@@ -23,10 +23,10 @@ public class RouteStationEntity {
     private StationEntity station;
 
     @Column(
-            name = "order",
+            name = "station_order",
             nullable = false
     )
-    private int order;
+    private int station_order;
 
 
 
