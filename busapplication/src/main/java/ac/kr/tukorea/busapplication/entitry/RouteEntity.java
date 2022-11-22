@@ -44,10 +44,10 @@ public class RouteEntity {
     private int last_time;
 
     @Column(
-            name = "interval",
+            name = "bus_interval",
             nullable = false
     )
-    private int interval;
+    private int bus_interval;
 
     @OneToMany(mappedBy = "route")
     private List<BusEntity> bus_id = new ArrayList<>();
