@@ -1,6 +1,8 @@
 package ac.kr.tukorea.busapplication.entitry;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Route")
 @Table(name = "route_table")
@@ -47,5 +49,10 @@ public class RouteEntity {
     )
     private int interval;
 
+    @OneToMany(mappedBy = "route")
+    private List<BusEntity> bus_id = new ArrayList<>();
+
+    @OneToMany(mappedBy = "route")
+    private List<RouteStationEntity> stations = new ArrayList<>();
 
 }
