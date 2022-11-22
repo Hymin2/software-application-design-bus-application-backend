@@ -6,22 +6,24 @@ import javax.persistence.*;
 @Table(name="bus_table")
 public class BusEntity {
     @Id
-    @SequenceGenerator(
-            name = "bus_sequence",
-            sequenceName = "bus_sequence",
-            allocationSize = 1
-    )
     @GeneratedValue(
-            generator = "bus_sequence",
-            strategy = GenerationType.SEQUENCE
+            strategy = GenerationType.IDENTITY
     )
     @Column(
             name = "id"
     )
     private long id;
-    private long route_id;
 
-    private long station_id;
+    @ManyToOne
+    @JoinColumn(name = "route_id")
+    private RouteEntity route;
+
+    @Column(
+            name = "order",
+            nullable = false
+    )
+    private int order;
+
     @Column(
             name = "gps_x",
             nullable = false
