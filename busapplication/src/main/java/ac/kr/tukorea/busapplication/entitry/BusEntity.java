@@ -19,10 +19,10 @@ public class BusEntity {
     private RouteEntity route;
 
     @Column(
-            name = "order",
+            name = "init_order",
             nullable = false
     )
-    private int order;
+    private int init_order;
 
     @Column(
             name = "gps_x",
