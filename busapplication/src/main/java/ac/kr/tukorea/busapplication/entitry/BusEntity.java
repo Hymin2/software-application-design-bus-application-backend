@@ -1,5 +1,7 @@
 package ac.kr.tukorea.busapplication.entitry;
 
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 import javax.persistence.*;
 
 @Entity(name = "Bus")
@@ -39,17 +41,10 @@ public class BusEntity {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public RouteEntity getRoute() {
         return route;
     }
 
-    public void setRoute(RouteEntity route) {
-        this.route = route;
-    }
 
     public int getInit_order() {
         return init_order;
@@ -73,5 +68,16 @@ public class BusEntity {
 
     public void setGps_y(double gps_y) {
         this.gps_y = gps_y;
+    }
+
+    @Override
+    public String toString() {
+        return "BusEntity{" +
+                "id=" + id +
+                ", route=" + route +
+                ", init_order=" + init_order +
+                ", gps_x=" + gps_x +
+                ", gps_y=" + gps_y +
+                '}';
     }
 }

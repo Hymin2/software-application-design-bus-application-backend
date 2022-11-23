@@ -32,31 +32,25 @@ public class RouteStationEntity {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public RouteEntity getRoute() {
         return route;
-    }
-
-    public void setRoute(RouteEntity route) {
-        this.route = route;
     }
 
     public StationEntity getStation() {
         return station;
     }
 
-    public void setStation(StationEntity station) {
-        this.station = station;
-    }
-
     public int getStation_order() {
         return station_order;
     }
 
-    public void setStation_order(int station_order) {
-        this.station_order = station_order;
+    @Override
+    public String toString() {
+        return "RouteStationEntity{" +
+                "id=" + id +
+                ", route=" + route +
+                ", station=" + station +
+                ", station_order=" + station_order +
+                '}';
     }
 }
