@@ -1,5 +1,7 @@
 package ac.kr.tukorea.busapplication.entitry;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,7 @@ public class RouteEntity {
             name = "number",
             nullable = false
     )
-    private int number;
+    private String number;
 
     @Column(
             name = "starting_point",
@@ -49,9 +51,11 @@ public class RouteEntity {
     )
     private int bus_interval;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "route")
     private List<BusEntity> bus_id = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "route")
     private List<RouteStationEntity> stations = new ArrayList<>();
 
@@ -59,7 +63,7 @@ public class RouteEntity {
         return id;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
