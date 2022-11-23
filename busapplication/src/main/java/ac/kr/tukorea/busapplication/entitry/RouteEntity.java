@@ -55,4 +55,75 @@ public class RouteEntity {
     @OneToMany(mappedBy = "route")
     private List<RouteStationEntity> stations = new ArrayList<>();
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public String getStarting_point() {
+        return starting_point;
+    }
+
+    public void setStarting_point(String starting_point) {
+        this.starting_point = starting_point;
+    }
+
+    public String getTerminal() {
+        return terminal;
+    }
+
+    public void setTerminal(String terminal) {
+        this.terminal = terminal;
+    }
+
+    public int getFirst_time() {
+        return first_time;
+    }
+
+    public void setFirst_time(int first_time) {
+        this.first_time = first_time;
+    }
+
+    public int getLast_time() {
+        return last_time;
+    }
+
+    public void setLast_time(int last_time) {
+        this.last_time = last_time;
+    }
+
+    public int getBus_interval() {
+        return bus_interval;
+    }
+
+    public void setBus_interval(int bus_interval) {
+        this.bus_interval = bus_interval;
+    }
+
+    public List<BusEntity> getBus_id() {
+        return bus_id;
+    }
+
+    public void setBus_id(List<BusEntity> bus_id) {
+        this.bus_id = bus_id;
+    }
+
+    public List<RouteStationEntity> getStations() {
+        return stations;
+    }
+
+    public void setStations(List<RouteStationEntity> stations) {
+        this.stations = stations;
+    }
 }

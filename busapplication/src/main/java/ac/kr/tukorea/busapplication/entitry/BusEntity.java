@@ -35,5 +35,43 @@ public class BusEntity {
     )
     private double gps_y;
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public RouteEntity getRoute() {
+        return route;
+    }
+
+    public void setRoute(RouteEntity route) {
+        this.route = route;
+    }
+
+    public int getInit_order() {
+        return init_order;
+    }
+
+    public void setInit_order(int init_order) {
+        this.init_order = init_order;
+    }
+
+    public double getGps_x() {
+        return gps_x;
+    }
+
+    public void setGps_x(double gps_x) {
+        this.gps_x = gps_x;
+    }
+
+    public double getGps_y() {
+        return gps_y;
+    }
+
+    public void setGps_y(double gps_y) {
+        this.gps_y = gps_y;
+    }
 }
