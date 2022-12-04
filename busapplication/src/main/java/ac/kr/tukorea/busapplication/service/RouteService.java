@@ -1,6 +1,7 @@
 package ac.kr.tukorea.busapplication.service;
 
-import ac.kr.tukorea.busapplication.entitry.RouteEntity;
+import ac.kr.tukorea.busapplication.DTO.RouteDTO;
+import ac.kr.tukorea.busapplication.DTO.StopDTO;
 import ac.kr.tukorea.busapplication.repository.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,7 @@ public class RouteService {
     public RouteService(RouteRepository routeRepository) {
         this.routeRepository = routeRepository;
     }
-
-    public List<RouteEntity> getRoute(String number){
-        return routeRepository.findAllByNumberStartsWith(number);
+    public List<RouteDTO> getRoute(String name) {
+        return routeRepository.findByNameStartsWith(name);
     }
 }
