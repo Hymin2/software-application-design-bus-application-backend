@@ -19,9 +19,14 @@ public class BusContoroller {
         this.busService = busService;
     }
 
+    @GetMapping(value = "all_bus")
+    public List<BusDTO> getAllBus(@RequestParam int routeid){
+        return busService.getAllBus(routeid);
+    }
+
     @GetMapping(value = "bus")
-    public List<BusDTO> getBus(@RequestParam String routeid){
-        return busService.getBus(routeid);
+    public BusDTO getBus(@RequestParam int routeid, @RequestParam int busid){
+        return busService.getBus(routeid, busid)
     }
 
     @PostMapping(value = "post_bus")
@@ -38,7 +43,15 @@ public class BusContoroller {
     }
 
     @PutMapping(value = "put_bus")
-    public BusUpdateDTO updateBus(@RequestParam BusUpdateDTO busUpdateDTO){
-        return busUpdateDTO;
+    public String updateBus(@RequestParam BusUpdateDTO busUpdateDTO){
+        BusEntity busEntity = busService.updateBus(busUpdateDTO);
+        String response;
+
+        if(busEntity != null)
+            response = "SUCCESS";
+        else
+            response = "FAILED";
+
+        return response;
     }
 }

@@ -3,6 +3,7 @@ package ac.kr.tukorea.busapplication.DTO;
 import javax.persistence.*;
 
 public class BusDTO {
+    private long id;
     private int route_id;
     private String bus_id;
     private int init_order;
@@ -10,7 +11,8 @@ public class BusDTO {
     private double gps_y;
     private int current_stop;
 
-    public BusDTO(int route_id, String bus_id, int init_order, double gps_x, double gps_y, int current_stop) {
+    public BusDTO(long id, int route_id, String bus_id, int init_order, double gps_x, double gps_y, int current_stop) {
+        this.id = id;
         this.route_id = route_id;
         this.bus_id = bus_id;
         this.init_order = init_order;
@@ -20,6 +22,14 @@ public class BusDTO {
     }
 
     public BusDTO() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public int getRoute_id() {
