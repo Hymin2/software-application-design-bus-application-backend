@@ -7,6 +7,7 @@ import ac.kr.tukorea.busapplication.repository.BusRepository;
 import ac.kr.tukorea.busapplication.repository.StopRepository;
 import ac.kr.tukorea.busapplication.repository.RouteStopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class BusService {
     }
 
     public BusDTO getBus(int routeid, int stoporder){
-        return busRepository.findByRoute_idAndAndCurrent_stop(routeid, stoporder);
+        return busRepository.findTop1ByRoute_idAndAndCurrent_stop(routeid, stoporder).get(0);
     }
 
     public BusEntity saveBus(BusDTO busDTO){
@@ -68,6 +69,11 @@ public class BusService {
         return busRepository.save(busEntity);
     }
 
+    public void deleteBus(int routeid, String busid){
+        BusDTO busDTO = busRepository.findByRoute_idAndBus_id(routeid, busid);
+
+        busRepository.deleteById(busDTO.getId());
+    }
     private static double distance(double lat1, double lon1, double lat2, double lon2){
         double theta = lon1 - lon2;
         double dist = Math.sin(deg2rad(lat1))* Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1))*Math.cos(deg2rad(lat2))*Math.cos(deg2rad(theta));

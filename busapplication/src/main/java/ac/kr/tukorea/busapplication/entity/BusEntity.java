@@ -58,4 +58,8 @@ public class BusEntity {
         this.gps_y = gps_y;
         this.current_stop = current_stop;
     }
+
+    public long getId() {
+        return id;
+    }
 }

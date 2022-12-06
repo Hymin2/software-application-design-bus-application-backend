@@ -25,8 +25,8 @@ public class BusContoroller {
     }
 
     @GetMapping(value = "bus")
-    public BusDTO getBus(@RequestParam int routeid, @RequestParam int busid){
-        return busService.getBus(routeid, busid)
+    public BusDTO getBus(@RequestParam int routeid, @RequestParam int stoporder){
+        return busService.getBus(routeid, stoporder);
     }
 
     @PostMapping(value = "post_bus")
@@ -53,5 +53,10 @@ public class BusContoroller {
             response = "FAILED";
 
         return response;
+    }
+
+    @DeleteMapping(value = "delete_bus")
+    public void deleteBus(@RequestParam int routeid, @RequestParam String busid){
+        busService.deleteBus(routeid, busid);
     }
 }
