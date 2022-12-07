@@ -56,7 +56,7 @@ public class BusService {
         double bus_gps_x = busDTO.getGps_x();
         double bus_gps_y = busDTO.getGps_y();
 
-        if(distance(stop_gps_x, stop_gps_y, bus_gps_x, bus_gps_y) < 5)
+        if(distance(stop_gps_x, stop_gps_y, bus_gps_x, bus_gps_y) < 30)
             busDTO.setCurrent_stop(busDTO.getCurrent_stop() + 1);
 
         busDTO.setGps_x(busUpdateDTO.getGps_x());
