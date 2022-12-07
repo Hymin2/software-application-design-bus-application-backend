@@ -14,6 +14,6 @@ public interface RouteStopRepository extends JpaRepository<RouteStopEntity, Inte
     @Query(value = "select new ac.kr.tukorea.busapplication.DTO.RouteStopDTO(rs.stop_id, rs.stop_name, rs.stop_order, rs.updown, s.mobile_no) from RouteStop rs inner join Stop s on s.id = rs.stop_id where rs.route_id = :route_id")
     List<RouteStopDTO> findStopIDAndStopNameAndStopOrderAndUpDownByRouteId(@Param("route_id") int route_id);
 
-    @Query(value = "select * from route_stop_table rs where rs.route_id = :routeid and rs.stop_order = :stoporder + 1", nativeQuery = true)
+    @Query(value = "select new ac.kr.tukorea.busapplication.DTO.RouteStopDTO(rs.stop_id, rs.stop_name, rs.stop_order, rs.updown) from RouteStop rs where rs.route_id = :routeid and rs.stop_order = :stoporder + 1")
     RouteStopDTO findNextStopByRoute_idAndStop_order(int routeid, int stoporder);
 }
