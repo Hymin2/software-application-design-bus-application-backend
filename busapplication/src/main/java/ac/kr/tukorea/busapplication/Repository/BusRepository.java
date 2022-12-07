@@ -21,7 +21,7 @@ public interface BusRepository extends JpaRepository<BusEntity, Long> {
             " from Bus b where b.route_id = :routeid and b.bus_id = :busid")
     BusDTO findByRoute_idAndBus_id(int routeid, String busid);
 
-    @Query(value = "select new ac.kr.tukorea.busapplication.DTO.BusDTO(b.id, b.route_id, b.bus_id, b.init_order, b.gps_x, b.gps_y, b.current_stop)" +
+    @Query(value = "select new ac.kr.tukorea.busapplication.DTO.BusDTO(b.bus_id, b.gps_x, b.gps_y, b.current_stop)" +
             " from Bus b where b.route_id = :routeid and b.current_stop < :stop_order order by b.current_stop desc")
     List<BusDTO> findTop1ByRoute_idAndAndCurrent_stop(int routeid, int stop_order);
 
