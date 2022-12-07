@@ -9,6 +9,8 @@ import ac.kr.tukorea.busapplication.repository.RouteStopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
@@ -40,8 +42,11 @@ public class BusService {
         return busRepository.save(busEntity);
     }
 
-    public BusEntity updateBus(BusUpdateDTO busUpdateDTO){
+    @Transactional
+    public void updateBus(BusUpdateDTO busUpdateDTO){
+
         BusDTO busDTO = busRepository.findByRoute_idAndBus_id(busUpdateDTO.getRoute_id(), busUpdateDTO.getBus_id());
+
         RouteStopDTO routeStopDTO = routeStopRepository.findNextStopByRoute_idAndStop_order(busDTO.getRoute_id(), busDTO.getCurrent_stop());
         StopDTO stopDTO = stopRepository.findById(routeStopDTO.getStop_id());
 
@@ -57,22 +62,16 @@ public class BusService {
         busDTO.setGps_x(busUpdateDTO.getGps_x());
         busDTO.setGps_y(busUpdateDTO.getGps_y());
 
-        BusEntity busEntity = new BusEntity(
-                busDTO.getId(),
-                busDTO.getRoute_id(),
-                busDTO.getBus_id(),
-                busDTO.getInit_order(),
-                bus_gps_x,
-                bus_gps_y,
-                busDTO.getCurrent_stop());
-
-        return busRepository.save(busEntity);
+        busRepository.updateById(busDTO.getId(), busUpdateDTO.getGps_x(), busUpdateDTO.getGps_y(), busDTO.getCurrent_stop());
     }
 
-    public void deleteBus(int routeid, String busid){
+    public BusEntity deleteBus(int routeid, String busid){
         BusDTO busDTO = busRepository.findByRoute_idAndBus_id(routeid, busid);
+        BusEntity busEntity = new BusEntity(busDTO.getId(), busDTO.getRoute_id(), busDTO.getBus_id(), busDTO.getInit_order(), busDTO.getGps_x(), busDTO.getGps_y(), busDTO.getCurrent_stop());
 
-        busRepository.deleteById(busDTO.getId());
+        busRepository.delete(busEntity);
+
+        return busEntity;
     }
     private static double distance(double lat1, double lon1, double lat2, double lon2){
         double theta = lon1 - lon2;

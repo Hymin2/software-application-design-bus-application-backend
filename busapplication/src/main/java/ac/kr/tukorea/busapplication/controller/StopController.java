@@ -24,4 +24,9 @@ public class StopController {
     public List<StopDTO> getStop(@RequestParam String name){
         return stopService.getStop(name);
     }
+
+    @GetMapping(value = "stop_id")
+    public StopDTO getStopById(@RequestParam int id){
+        return stopService.getStopById(id);
+    }
 }

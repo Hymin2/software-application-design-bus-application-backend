@@ -5,6 +5,7 @@ import ac.kr.tukorea.busapplication.DTO.BusUpdateDTO;
 import ac.kr.tukorea.busapplication.entity.BusEntity;
 import ac.kr.tukorea.busapplication.service.BusService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,9 +43,18 @@ public class BusContoroller {
         return response;
     }
 
+
+    @Transactional
     @PutMapping(value = "put_bus")
-    public String updateBus(@RequestParam BusUpdateDTO busUpdateDTO){
-        BusEntity busEntity = busService.updateBus(busUpdateDTO);
+    public void updateBus(@RequestBody BusUpdateDTO busUpdateDTO){
+        busService.updateBus(busUpdateDTO);
+
+    }
+
+    @DeleteMapping(value = "delete_bus")
+    public String deleteBus(@RequestParam int routeid, @RequestParam String busid){
+        BusEntity busEntity = busService.deleteBus(routeid, busid);
+
         String response;
 
         if(busEntity != null)
@@ -53,10 +63,5 @@ public class BusContoroller {
             response = "FAILED";
 
         return response;
-    }
-
-    @DeleteMapping(value = "delete_bus")
-    public void deleteBus(@RequestParam int routeid, @RequestParam String busid){
-        busService.deleteBus(routeid, busid);
     }
 }

@@ -1,7 +1,12 @@
 package ac.kr.tukorea.busapplication.entity;
 
+import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.*;
 
+
+@DynamicUpdate
 @Entity(name = "Bus")
 @Table(name="bus_table")
 public class BusEntity {
@@ -59,7 +64,62 @@ public class BusEntity {
         this.current_stop = current_stop;
     }
 
+    public BusEntity() {
+    }
+
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public int getRoute_id() {
+        return route_id;
+    }
+
+    public void setRoute_id(int route_id) {
+        this.route_id = route_id;
+    }
+
+    public String getBus_id() {
+        return bus_id;
+    }
+
+    public void setBus_id(String bus_id) {
+        this.bus_id = bus_id;
+    }
+
+    public int getInit_order() {
+        return init_order;
+    }
+
+    public void setInit_order(int init_order) {
+        this.init_order = init_order;
+    }
+
+    public double getGps_x() {
+        return gps_x;
+    }
+
+    public void setGps_x(double gps_x) {
+        this.gps_x = gps_x;
+    }
+
+    public double getGps_y() {
+        return gps_y;
+    }
+
+    public void setGps_y(double gps_y) {
+        this.gps_y = gps_y;
+    }
+
+    public int getCurrent_stop() {
+        return current_stop;
+    }
+
+    public void setCurrent_stop(int current_stop) {
+        this.current_stop = current_stop;
     }
 }

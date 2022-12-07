@@ -21,6 +21,13 @@ public class BusDTO {
         this.current_stop = current_stop;
     }
 
+    public BusDTO(String bus_id, double gps_x, double gps_y, int current_stop) {
+        this.bus_id = bus_id;
+        this.gps_x = gps_x;
+        this.gps_y = gps_y;
+        this.current_stop = current_stop;
+    }
+
     public BusDTO() {
     }
 

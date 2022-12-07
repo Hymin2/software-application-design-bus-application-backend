@@ -19,4 +19,8 @@ public class StopService {
     public List<StopDTO> getStop(String name) {
         return stopRepository.findByNameStartingWith(name);
     }
+
+    public StopDTO getStopById(int id){
+        return stopRepository.findById(id);
+    }
 }

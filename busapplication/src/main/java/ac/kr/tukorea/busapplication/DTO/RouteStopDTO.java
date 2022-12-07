@@ -17,6 +17,13 @@ public class RouteStopDTO {
         this.mobile_no = mobile_no;
     }
 
+    public RouteStopDTO(int stop_id, String stop_name, int stop_order, String updown) {
+        this.stop_id = stop_id;
+        this.stop_name = stop_name;
+        this.stop_order = stop_order;
+        this.updown = updown;
+    }
+
     public RouteStopDTO() {
     }
 
